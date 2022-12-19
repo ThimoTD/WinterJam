@@ -116,7 +116,19 @@ public class BuildSnowman : MonoBehaviour
 
                 if(snowmanFase1 && snowmanFase2 && !snowmanFase3) // if snowman has legs and body build
                 {
+                    if(inventory.stones > 0 && stoneBody != 2)
+                    {
+                        //unhide button [stoneBody] using array
+                        inventory.stones--;
+                        stoneBody++;
+                    }
 
+                    if(inventory.sticks > 0 && arms != 1)
+                    {
+                        //unhide arms [arms] using array
+                        inventory.sticks--;
+                        arms++;
+                    }
                 }
 
                 if (snowmanFase1 && snowmanFase2 && snowmanFase3) // if snowman is completely build
