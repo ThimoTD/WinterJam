@@ -8,22 +8,20 @@ public class BuildSnowman : MonoBehaviour
 
     public Inventory inventory;
 
+    public ObjectHolder objectHolder;
+
     private RaycastHit hit;
 
     private bool hitting;
 
     bool snowmanFase1;
+    bool snowmanFase2;
+    bool snowmanFase3;
     int snowmanCount;
 
-    bool snowmanFase2;
-
-    bool snowmanFase3;
-
     int arms;
-
     int stoneBody;
     int stoneHead;
-
     bool carrot;
     bool tophat;
     bool scarf;
@@ -33,7 +31,6 @@ public class BuildSnowman : MonoBehaviour
     void Update()
     {
         hitting = Physics.Raycast(lookDir.transform.position, lookDir.transform.forward, out hit);
-
         if (hitting)
         {
             if(hit.distance < 5 && hit.transform.tag == "Snowman")
@@ -48,6 +45,10 @@ public class BuildSnowman : MonoBehaviour
                     if (snowmanCount == 0)
                     {
                         inventory.snowballs--;
+                        objectHolder.bottomSnowmanFase1Part.SetActive(false);
+                        objectHolder.bottomSnowmanFase1.SetActive(true);
+                        objectHolder.bottomSnowmanFase2Part.SetActive(false);
+
                         //unhide fase 1
                     } else if (snowmanCount == 1)
                     {
