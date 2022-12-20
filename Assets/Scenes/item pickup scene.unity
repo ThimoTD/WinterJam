@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -428,6 +428,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1358794913701705763, guid: 80e8d9a27ab163a43881fb68bb4c42c7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1664748306701667923, guid: 80e8d9a27ab163a43881fb68bb4c42c7, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -461,6 +465,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5098506429952824511, guid: 80e8d9a27ab163a43881fb68bb4c42c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769779871703199301, guid: 80e8d9a27ab163a43881fb68bb4c42c7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -532,6 +540,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8634652615653072692, guid: 80e8d9a27ab163a43881fb68bb4c42c7, type: 3}
+      propertyPath: lookDir
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 8924403811204472382, guid: 80e8d9a27ab163a43881fb68bb4c42c7, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -632,7 +644,6 @@ GameObject:
   - component: {fileID: 928445787}
   - component: {fileID: 928445788}
   - component: {fileID: 928445789}
-  - component: {fileID: 928445790}
   m_Layer: 0
   m_Name: FirstPersonPlayer
   m_TagString: Untagged
@@ -770,19 +781,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 634f6881ede7d3c4cb2c92f81efd0f47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookDir: {fileID: 963194227}
---- !u!114 &928445790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928445781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a0ecbc0ba126b4c8c25ecc398093b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lookDir: {fileID: 963194227}

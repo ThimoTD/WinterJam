@@ -14,8 +14,6 @@ public class PickupItem : MonoBehaviour
 
     private bool hitting;
 
-    public Inventory inventory;
-
     private int itemsHolding;
    
 
@@ -33,43 +31,43 @@ public class PickupItem : MonoBehaviour
             if (hit.distance < 5 && hit.transform.tag == "Snowball" && Input.GetKeyDown(KeyCode.F))
             {
                 Destroy(hit.transform.gameObject);
-                inventory.snowballs++;
+                Inventory.snowballs++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Stone" && Input.GetKeyDown(KeyCode.F))
             {
                 Destroy(hit.transform.gameObject);
-                inventory.stones++;
+                Inventory.stones++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Stick" && Input.GetKeyDown(KeyCode.F))
             {
                 Destroy(hit.transform.gameObject);
-                inventory.sticks++;
+                Inventory.sticks++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Carrot" && Input.GetKeyDown(KeyCode.F))
             {
                 Destroy(hit.transform.gameObject);
-                inventory.carrot++;
+                Inventory.carrot++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Scarf" && Input.GetKeyDown(KeyCode.F))
             {
                 Destroy(hit.transform.gameObject);
-                inventory.scarf++;
+                Inventory.scarf++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Tophat" && Input.GetKeyDown(KeyCode.F))
             {
                 Destroy(hit.transform.gameObject);
-                inventory.tophat++;
+                Inventory.tophat++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Coin" && Input.GetKeyDown(KeyCode.F))
             {
                 Destroy(hit.transform.gameObject);
-                inventory.coins++;
+                Inventory.coins++;
             }
         }
     }
