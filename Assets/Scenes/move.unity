@@ -360,7 +360,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680806211}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.2, z: 0.5}
@@ -656,13 +656,13 @@ MonoBehaviour:
   moveSpeed: 15
   jumpForce: 4
   extrajumps: 0
-  maxJumps: 1
+  maxJumps: 0
   whatisGround:
     serializedVersion: 2
     m_Bits: 8
   orientation: {fileID: 928445785}
   moveDirection: {x: 0, y: 0, z: 0}
-  GroundObject: {fileID: 680806211}
+  GroundObject: {fileID: 0}
 --- !u!54 &928445787
 Rigidbody:
   m_ObjectHideFlags: 0
