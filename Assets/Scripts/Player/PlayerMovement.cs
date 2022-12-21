@@ -76,19 +76,19 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
-            
+
 
         if (!IsGrounded())
         {
             rb.drag = 0;
             rb.AddForce(0.02f * moveSpeed / Time.deltaTime * moveDirection.normalized, ForceMode.Force);
         }
-            
+
     }
 
     private void speedcheck()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x,0f, rb.velocity.z);
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         if (flatVel.magnitude > moveSpeed)
         {
