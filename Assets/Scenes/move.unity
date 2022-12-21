@@ -662,7 +662,8 @@ MonoBehaviour:
     m_Bits: 8
   orientation: {fileID: 928445785}
   moveDirection: {x: 0, y: 0, z: 0}
-  GroundObject: {fileID: 0}
+  GroundObject: {fileID: 680806211}
+  dash: 150
 --- !u!54 &928445787
 Rigidbody:
   m_ObjectHideFlags: 0

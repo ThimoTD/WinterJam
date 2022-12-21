@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject GroundObject;
     private GroundCheck gc;
 
+    public int dash;
+
 
     void Start()
     {
@@ -36,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     {
         speedcheck();
         if (Input.GetKeyDown(KeyCode.Space) && ReadyToJump()) Jump();
+
+        if (Input.GetKeyDown(KeyCode.LeftControl)) Dash();
     }
 
     private bool ReadyToJump()
@@ -52,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
             extrajumps--;
             return true;
         }
+
 
         return false;
     }
@@ -98,6 +103,12 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 5f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void Dash()
+    {
+        Debug.Log("a");
+        rb.AddForce(transform.forward * dash, ForceMode.Impulse);
     }
 
     private Vector2 MyInput() => new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));

@@ -9,11 +9,9 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        Debug.Log("trigger");
         if (collision.gameObject.layer == 3)
         {
             isGrounded = true;
-            Debug.Log("b");
         }
     }
 
@@ -22,7 +20,6 @@ public class GroundCheck : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             isGrounded = false;
-            Debug.Log("a");
         }
     }
 }
