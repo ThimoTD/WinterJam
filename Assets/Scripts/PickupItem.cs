@@ -17,6 +17,8 @@ public class PickupItem : MonoBehaviour
     private int itemsHolding;
 
     public GameObject door;
+
+    public Animator anim;
    
 
     void Update()
@@ -76,9 +78,10 @@ public class PickupItem : MonoBehaviour
                 Destroy(hit.transform.gameObject);
                 Inventory.key++;
             }
-            if (hit.distance < 5 && hit.transform.tag == "Door" && Input.GetKeyDown(KeyCode.E))
+            if (hit.distance < 5 && hit.transform.tag == "Door" && Input.GetKeyDown(KeyCode.E) && Inventory.key > 0)
             {
-                door.GetComponent<Animator>().Play("OpenDoor"); 
+                anim.SetBool("openDoor", true);
+                Debug.Log("test");
             }
         }
     }
