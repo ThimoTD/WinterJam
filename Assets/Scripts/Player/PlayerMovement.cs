@@ -30,8 +30,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement(MyInput());
-
-        //NoSlide(MyInput());
     }
 
     void Update()
@@ -58,28 +56,6 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
-    private void NoSlide(Vector2 input)
-    {
-        if (IsGrounded() && input == new Vector2(0, 0)) 
-        {
-            if(rb.constraints == RigidbodyConstraints.FreezeRotation)
-            {
-                Debug.Log("somethign");
-                //rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotation;
-            }
-            
-        }
-        else
-        {
-            if(rb.constraints != RigidbodyConstraints.FreezeRotation)
-            {
-                Debug.Log("set");
-                //rb.constraints = RigidbodyConstraints.FreezeRotation;
-            }
-                
-        }
-    }
-
     private void Movement(Vector2 input)
     {
         moveDirection = orientation.forward * input.y + orientation.right * input.x;
@@ -88,6 +64,12 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 1;
             rb.AddForce(0.2f * moveSpeed / Time.deltaTime * moveDirection.normalized, ForceMode.Force);
+
+            if (input == new Vector2(0, 0))
+            {
+                rb.velocity = new Vector3(Mathf.Lerp(rb.velocity.x, 0 , 0.003f), 0, Mathf.Lerp(rb.velocity.z, 0, 0.003f));
+
+            }
         }
             
 
