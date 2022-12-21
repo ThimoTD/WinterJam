@@ -79,7 +79,7 @@ public class NpcInterface : MonoBehaviour
 
     public void DoubleJumpBuy()
     {
-        if(Inventory.coins > 4)
+        if(Inventory.coins > 0)
         {
 
         }
@@ -87,7 +87,7 @@ public class NpcInterface : MonoBehaviour
 
     public void DashBuy()
     {
-        if (Inventory.coins > 4)
+        if (Inventory.coins > 0)
         {
 
         }
@@ -95,7 +95,7 @@ public class NpcInterface : MonoBehaviour
 
     public void SprintBuy()
     {
-        if (Inventory.coins > 4)
+        if (Inventory.coins > 0)
         {
 
         }
@@ -103,9 +103,12 @@ public class NpcInterface : MonoBehaviour
 
     public void TophatBuy()
     {
-        if (Inventory.coins > 4 && Inventory.tophat == 0)
+        if (Inventory.coins > 0 && Inventory.tophat == 0)
         {
             Inventory.tophat++;
+            Inventory.tophatCount++;
+            Inventory.coins --;
+            
         }
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -81,19 +81,21 @@ public class BuildSnowman : MonoBehaviour
     public GameObject bottomSnowmanFase2;
     public GameObject bottomSnowmanFase3Part;
     public GameObject bottomSnowmanFase3;
+    public GameObject BuildSnowManText;
 
+    private bool Bruh = true;
     // Update is called once per frame
     void Update()
     {
         hitting = Physics.Raycast(lookDir.transform.position, lookDir.transform.forward, out hit);
         if (hitting)
         {
-            if(hit.distance < 5 && hit.transform.tag == "Snowman")
+            if (hit.distance < 5 && hit.transform.tag == "Snowman")
             {
                 Debug.Log("Press f to build snowman man");
             }
 
-            if(hit.distance < 5 && hit.transform.tag == "Snowman" && Input.GetKeyDown(KeyCode.E))
+            if (hit.distance < 5 && hit.transform.tag == "Snowman" && Input.GetKeyDown(KeyCode.E))
             {
                 if (!snowmanFase1 && !snowmanFase2 && !snowmanFase3 && Inventory.snowballs > 0 && !hasBuild) // if snowman has nothing completely build yet
                 {
@@ -105,7 +107,8 @@ public class BuildSnowman : MonoBehaviour
                         bottomSnowmanFase2Part.SetActive(true);
 
                         //unhide fase 1
-                    } else if (snowmanCount == 1)
+                    }
+                    else if (snowmanCount == 1)
                     {
                         Inventory.snowballs--;
                         bottomSnowmanFase2Part.SetActive(false);
@@ -113,7 +116,7 @@ public class BuildSnowman : MonoBehaviour
                         bottomSnowmanFase2.SetActive(true);
                         bottomSnowmanFase3Part.SetActive(true);
                     }
-                    else if(snowmanCount == 2)
+                    else if (snowmanCount == 2)
                     {
                         Inventory.snowballs--;
                         bottomSnowmanFase2.SetActive(false);
@@ -192,24 +195,25 @@ public class BuildSnowman : MonoBehaviour
                     hasBuild = true;
                 }
 
-                if(snowmanFase1 && snowmanFase2 && !hasBuild) // if snowman has legs and body build
+                if (snowmanFase1 && snowmanFase2 && !hasBuild) // if snowman has legs and body build
                 {
-                    if(Inventory.stones > 0 && stoneBody != 3 && !hasBuild)
+                    if (Inventory.stones > 0 && stoneBody != 3 && !hasBuild)
                     {
-                        if(stoneBody == 0)
+                        if (stoneBody == 0)
                         {
                             Inventory.stones--;
                             StoneButton1.SetActive(true);
                             StoneButton1Part.SetActive(false);
                             StoneButton2Part.SetActive(true);
-                        }else if(stoneBody == 1)
+                        }
+                        else if (stoneBody == 1)
                         {
                             Inventory.stones--;
                             StoneButton2.SetActive(true);
                             StoneButton2Part.SetActive(false);
                             StoneButton3Part.SetActive(true);
                         }
-                        else if(stoneBody == 2)
+                        else if (stoneBody == 2)
                         {
                             Inventory.stones--;
                             StoneButton3.SetActive(true);
@@ -219,15 +223,16 @@ public class BuildSnowman : MonoBehaviour
                         stoneBody++;
                     }
 
-                    if(Inventory.sticks > 0 && arms != 2 && !hasBuild)
+                    if (Inventory.sticks > 0 && arms != 2 && !hasBuild)
                     {
-                        if(arms == 0)
+                        if (arms == 0)
                         {
                             Inventory.sticks--;
                             LeftArmPart.SetActive(false);
                             RightArmPart.SetActive(true);
                             RightArm.SetActive(true);
-                        }else if(arms == 1)
+                        }
+                        else if (arms == 1)
                         {
                             Inventory.sticks--;
                             RightArmPart.SetActive(false);
@@ -241,13 +246,14 @@ public class BuildSnowman : MonoBehaviour
 
                 if (snowmanFase1 && snowmanFase2 && snowmanFase3 && !hasBuild) // if snowman is completely build
                 {
-                    if(!carrot && !hasBuild && Inventory.carrot > 0)
+                    if (!carrot && !hasBuild && Inventory.carrot > 0)
                     {
                         carrotNose.SetActive(true);
                         carrotNosePart.SetActive(false);
                         hasBuild = true;
                         Inventory.carrot--;
-                    }else if (Inventory.stones > 0 && !hasBuild && stoneHead != 7)
+                    }
+                    else if (Inventory.stones > 0 && !hasBuild && stoneHead != 7)
                     {
                         Debug.Log(hasBuild);
                         if (stoneHead == 0)
@@ -300,13 +306,15 @@ public class BuildSnowman : MonoBehaviour
                         }
                         hasBuild = true;
                         stoneHead++;
-                    }else if (!tophat && !hasBuild && Inventory.tophat > 0)
+                    }
+                    else if (!tophat && !hasBuild && Inventory.tophat > 0)
                     {
                         TophatPart.SetActive(false);
                         Tophat.SetActive(true);
                         Inventory.tophat--;
                         hasBuild = true;
-                    }else if(!scarf && !hasBuild && Inventory.scarf > 0)
+                    }
+                    else if (!scarf && !hasBuild && Inventory.scarf > 0)
                     {
                         ScarfPart.SetActive(false);
                         Scarf.SetActive(true);
@@ -315,11 +323,12 @@ public class BuildSnowman : MonoBehaviour
                     }
                 }
 
-                if (stoneBody == 3 && snowmanFase3)
+                if (stoneBody == 3 && snowmanFase3 && Bruh)
                 {
+                    Bruh = false;
                     StoneEyeLeftPart.SetActive(true);
                 }
-                hasBuild = false;
+                hasBuild = false; 
             }
         }
     }

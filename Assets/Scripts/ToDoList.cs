@@ -12,6 +12,7 @@ public class ToDoList : MonoBehaviour
     public TextMeshProUGUI text4;
     public TextMeshProUGUI text5;
     public TextMeshProUGUI text6;
+    public TextMeshProUGUI text7;
 
     void Update()
     {
@@ -21,5 +22,6 @@ public class ToDoList : MonoBehaviour
         text4.text = "Collect tophat " + Inventory.tophatCount + "/1";
         text5.text = "Collect scarf " + Inventory.scarfCount + "/1";
         text6.text = "Collect sticks " + Inventory.sticks + "/2";
+        text7.text = "Coins: " + Inventory.coins ;
     }
 }

@@ -19,17 +19,23 @@ public class PickupItem : MonoBehaviour
     public GameObject door;
 
     public Animator anim;
+
+    public GameObject PickUpText;
    
 
     void Update()
     {
         hitting = Physics.Raycast(lookDir.transform.position, lookDir.transform.forward, out hit);
 
+
         if (hitting)
         {
-            if (hit.distance < 5 && hit.transform.tag == "Snowball" || hit.transform.tag == "Stone" || hit.transform.tag == "Stick" || hit.transform.tag == "Carrot" || hit.transform.tag == "Scarf" || hit.transform.tag == "Tophat" || hit.transform.tag == "Coin")
+            if (hit.distance < 5 && hit.transform.tag == "Snowball" || hit.distance < 5 && hit.transform.tag == "Stone" || hit.distance < 5 && hit.transform.tag == "Stick" || hit.distance < 5 && hit.transform.tag == "Carrot" || hit.distance < 5 && hit.transform.tag == "Scarf" || hit.distance < 5 && hit.transform.tag == "Tophat" || hit.distance < 5 && hit.transform.tag == "Coin" || hit.distance < 5 && hit.transform.tag == "Key")
             {
-                Debug.Log("press f to pickup noob man");
+                PickUpText.gameObject.SetActive(true);
+            }else
+            {
+                PickUpText.gameObject.SetActive(false);
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Snowball" && Input.GetKeyDown(KeyCode.E))
