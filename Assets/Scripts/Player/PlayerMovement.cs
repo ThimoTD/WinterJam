@@ -17,9 +17,16 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 moveDirection;
 
+    public GameObject GroundObject;
+    private GroundCheck gc;
+
+    public int dash;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gc = GroundObject.GetComponent<GroundCheck>();
     }
 
     private void FixedUpdate()
@@ -31,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     {
         speedcheck();
         if (Input.GetKeyDown(KeyCode.Space) && ReadyToJump()) Jump();
+
+        if (Input.GetKeyDown(KeyCode.LeftControl)) Dash();
     }
 
     private bool ReadyToJump()
@@ -48,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
             return true;
         }
 
+
         return false;
     }
 
@@ -57,8 +67,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (IsGrounded())
         {
-            rb.drag = 1;
+            rb.drag = 3;
             rb.AddForce(0.2f * moveSpeed / Time.deltaTime * moveDirection.normalized, ForceMode.Force);
+
+            if (input == new Vector2(0, 0))
+            {
+                rb.velocity = new Vector3(Mathf.Lerp(rb.velocity.x, 0 , 0.003f), 0, Mathf.Lerp(rb.velocity.z, 0, 0.003f));
+
+            }
         }
 
 
@@ -89,7 +105,14 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
+    private void Dash()
+    {
+        Debug.Log("a");
+        rb.AddForce(transform.forward * dash, ForceMode.Impulse);
+    }
+
     private Vector2 MyInput() => new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-    private bool IsGrounded() => Physics.Raycast(transform.position, Vector3.down, 1.45f + 0.2f, whatisGround);
+    private bool IsGrounded() => gc.isGrounded;
+
 }
