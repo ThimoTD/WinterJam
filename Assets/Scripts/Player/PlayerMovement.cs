@@ -17,14 +17,21 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 moveDirection;
 
+    public GameObject GroundObject;
+    private GroundCheck gc;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gc = GroundObject.GetComponent<GroundCheck>();
     }
 
     private void FixedUpdate()
     {
         Movement(MyInput());
+
+        //NoSlide(MyInput());
     }
 
     void Update()
@@ -49,6 +56,28 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void NoSlide(Vector2 input)
+    {
+        if (IsGrounded() && input == new Vector2(0, 0)) 
+        {
+            if(rb.constraints == RigidbodyConstraints.FreezeRotation)
+            {
+                Debug.Log("somethign");
+                //rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotation;
+            }
+            
+        }
+        else
+        {
+            if(rb.constraints != RigidbodyConstraints.FreezeRotation)
+            {
+                Debug.Log("set");
+                //rb.constraints = RigidbodyConstraints.FreezeRotation;
+            }
+                
+        }
     }
 
     private void Movement(Vector2 input)
@@ -91,5 +120,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 MyInput() => new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-    private bool IsGrounded() => Physics.Raycast(transform.position, Vector3.down, 1.45f + 0.2f, whatisGround);
+    private bool IsGrounded() => gc.isGrounded;
+
 }

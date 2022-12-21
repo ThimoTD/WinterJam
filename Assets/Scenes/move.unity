@@ -697,6 +697,10 @@ MonoBehaviour:
     m_Bits: 8
   orientation: {fileID: 928445785}
   moveDirection: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
+  GroundObject: {fileID: 1917656824}
+>>>>>>> Stashed changes
 --- !u!54 &928445787
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -885,4 +889,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 0
   ground:
+<<<<<<< Updated upstream
+=======
+    serializedVersion: 2
+>>>>>>> Stashed changes
     m_Bits: 8
