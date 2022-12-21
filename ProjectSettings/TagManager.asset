@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Snowball
+  - Key
+  - Snowman
+  - Door
+  - Stone
+  - Stick
+  - Carrot
+  - Scarf
+  - Tophat
+  - ThrowableSnowball
   layers:
   - Default
   - TransparentFX

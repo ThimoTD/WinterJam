@@ -83,6 +83,11 @@ public class PickupItem : MonoBehaviour
                 anim.SetBool("openDoor", true);
                 Debug.Log("test");
             }
+
+            if(hit.distance < 5 && hit.transform.tag == "ThrowableSnowball" && Input.GetKeyDown(KeyCode.K) && Inventory.trowableSnowball > 0)
+            {
+
+            }
         }
     }
 }

@@ -12,4 +12,5 @@ public static class Inventory
     public static int tophat;
     public static int coins;
     public static int key;
+    public static int trowableSnowball;
 }
