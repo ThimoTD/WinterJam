@@ -36,36 +36,42 @@ public class PickupItem : MonoBehaviour
             {
                 Destroy(hit.transform.gameObject);
                 Inventory.snowballs++;
+                Inventory.snowballsCount++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Stone" && Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(hit.transform.gameObject);
                 Inventory.stones++;
+                Inventory.stonesCount++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Stick" && Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(hit.transform.gameObject);
                 Inventory.sticks++;
+                Inventory.sticksCount++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Carrot" && Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(hit.transform.gameObject);
                 Inventory.carrot++;
+                Inventory.carrotCount++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Scarf" && Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(hit.transform.gameObject);
                 Inventory.scarf++;
+                Inventory.scarfCount++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Tophat" && Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(hit.transform.gameObject);
                 Inventory.tophat++;
+                Inventory.tophatCount++;
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Coin" && Input.GetKeyDown(KeyCode.E))
