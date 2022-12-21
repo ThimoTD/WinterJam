@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (IsGrounded())
         {
-            rb.drag = 1;
+            rb.drag = 3;
             rb.AddForce(0.2f * moveSpeed / Time.deltaTime * moveDirection.normalized, ForceMode.Force);
 
             if (input == new Vector2(0, 0))

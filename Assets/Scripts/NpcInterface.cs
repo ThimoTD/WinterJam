@@ -7,19 +7,23 @@ public class NpcInterface : MonoBehaviour
     public GameObject ShopInterface;
     public GameObject KeyCodePress;
 
+    public GameObject texttt;
+
     public GameObject player;
     MouseLook mouselook;
     PlayerMovement pm;
+
+    
     // Start is called before the first frame update
     void Start()
     {
-       
+  
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -53,7 +57,7 @@ public class NpcInterface : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             ShopInterface.SetActive(true);
-            KeyCodePress.SetActive(false);
+            texttt.SetActive(false);
             pm = GameObject.Find("FirstPersonPlayer").GetComponent<PlayerMovement>();
             pm.moveSpeed = 0;
             player.GetComponent<MouseLook>().enabled = false;
@@ -73,4 +77,35 @@ public class NpcInterface : MonoBehaviour
         }
     }
 
+    public void DoubleJumpBuy()
+    {
+        if(Inventory.coins > 4)
+        {
+
+        }
+    }
+
+    public void DashBuy()
+    {
+        if (Inventory.coins > 4)
+        {
+
+        }
+    }
+
+    public void SprintBuy()
+    {
+        if (Inventory.coins > 4)
+        {
+
+        }
+    }
+
+    public void TophatBuy()
+    {
+        if (Inventory.coins > 4 && Inventory.tophat == 0)
+        {
+            Inventory.tophat++;
+        }
+    }
 }
