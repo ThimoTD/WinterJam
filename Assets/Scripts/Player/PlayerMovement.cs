@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject GroundObject;
     private GroundCheck gc;
 
+    public bool dashb;
+
     public int dash;
 
 
@@ -39,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         speedcheck();
         if (Input.GetKeyDown(KeyCode.Space) && ReadyToJump()) Jump();
 
-        if (Input.GetKeyDown(KeyCode.LeftControl)) Dash();
+        if (Input.GetKeyDown(KeyCode.LeftControl) && dashb) Dash();
     }
 
     private bool ReadyToJump()

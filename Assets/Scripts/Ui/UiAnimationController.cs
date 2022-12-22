@@ -129,7 +129,7 @@ public static class UiAnimationController
         Ml.enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        Pm.moveSpeed = 0;
+        Pm.enabled = false;
     }
 
     public static void UnLockMove()
@@ -137,7 +137,7 @@ public static class UiAnimationController
         Ml.enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Pm.moveSpeed = 15;
+        Pm.enabled = true;
     }
 
 

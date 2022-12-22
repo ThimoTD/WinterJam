@@ -58,7 +58,7 @@ public class NpcInterface : MonoBehaviour
     {
         if(Inventory.coins > 0)
         {
-
+            player.GetComponent<PlayerMovement>().maxJumps = 1;
         }
     }
 
@@ -66,15 +66,16 @@ public class NpcInterface : MonoBehaviour
     {
         if (Inventory.coins > 0)
         {
-
+            player.GetComponent<PlayerMovement>().dashb = true;
         }
     }
 
     public void SprintBuy()
     {
+        Debug.Log("SprintBuy");
         if (Inventory.coins > 0)
         {
-
+            player.GetComponent<PlayerMovement>().moveSpeed = 20;
         }
     }
 
