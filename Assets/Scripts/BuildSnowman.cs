@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BuildSnowman : MonoBehaviour
 {
@@ -21,6 +23,8 @@ public class BuildSnowman : MonoBehaviour
     bool carrot;
     bool tophat;
     bool scarf;
+
+    
 
     //Top part
     public GameObject topSnowmanFase1Part;
@@ -82,11 +86,33 @@ public class BuildSnowman : MonoBehaviour
     public GameObject bottomSnowmanFase3Part;
     public GameObject bottomSnowmanFase3;
     public GameObject BuildSnowManText;
+    public GameObject VictoryText;
+    public GameObject VictoryButton;
+
+    public GameObject player;
+    PlayerMovement pm;
 
     private bool Bruh = true;
     // Update is called once per frame
+
+    public void resetScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
     void Update()
     {
+        if (arms == 2 && stoneBody == 3 && stoneHead == 7 && carrot  && tophat && scarf)
+        {
+            VictoryText.SetActive(true);
+            VictoryButton.SetActive(true);
+            pm = GameObject.Find("FirstPersonPlayer").GetComponent<PlayerMovement>();
+            pm.moveSpeed = 0;
+            player.GetComponent<MouseLook>().enabled = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         hitting = Physics.Raycast(lookDir.transform.position, lookDir.transform.forward, out hit);
         if (hitting)
         {
@@ -252,6 +278,7 @@ public class BuildSnowman : MonoBehaviour
                         carrotNosePart.SetActive(false);
                         hasBuild = true;
                         Inventory.carrot--;
+                        carrot = true;
                     }
                     else if (Inventory.stones > 0 && !hasBuild && stoneHead != 7)
                     {
@@ -313,6 +340,7 @@ public class BuildSnowman : MonoBehaviour
                         Tophat.SetActive(true);
                         Inventory.tophat--;
                         hasBuild = true;
+                        tophat = true;
                     }
                     else if (!scarf && !hasBuild && Inventory.scarf > 0)
                     {
@@ -320,6 +348,7 @@ public class BuildSnowman : MonoBehaviour
                         Scarf.SetActive(true);
                         Inventory.scarf--;
                         hasBuild = true;
+                        scarf = true;
                     }
                 }
 
@@ -328,8 +357,29 @@ public class BuildSnowman : MonoBehaviour
                     Bruh = false;
                     StoneEyeLeftPart.SetActive(true);
                 }
-                hasBuild = false; 
+                hasBuild = false;
+
+                
             }
         }
+    }
+
+    void Awake()
+    {
+        Inventory.snowballs = 0;
+        Inventory.stones = 0;
+        Inventory.carrot = 0;
+        Inventory.scarf = 0;
+        Inventory.sticks = 0;
+        Inventory.tophat = 0;
+        Inventory.coins = 0;
+        Inventory.key = 0;
+
+        Inventory.snowballsCount = 0;
+        Inventory.stonesCount = 0;
+        Inventory.carrotCount = 0;
+        Inventory.scarfCount = 0;
+        Inventory.tophatCount = 0;
+        Inventory.sticksCount = 0;
     }
 }
