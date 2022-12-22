@@ -20,5 +20,4 @@ public static class Inventory
     public static int scarfCount;
     public static int sticksCount;
     public static int tophatCount;
-
 }
