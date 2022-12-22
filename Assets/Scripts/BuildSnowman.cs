@@ -366,12 +366,12 @@ public class BuildSnowman : MonoBehaviour
 
     void Awake()
     {
-        Inventory.snowballs = 9;
-        Inventory.stones = 10;
-        Inventory.carrot = 1;
-        Inventory.scarf = 1;
-        Inventory.sticks = 2;
-        Inventory.tophat = 1;
+        Inventory.snowballs = 0;
+        Inventory.stones = 0;
+        Inventory.carrot = 0;
+        Inventory.scarf = 0;
+        Inventory.sticks = 0;
+        Inventory.tophat = 0;
         Inventory.coins = 0;
         Inventory.key = 0;
 
