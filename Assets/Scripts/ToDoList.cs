@@ -16,7 +16,7 @@ public class ToDoList : MonoBehaviour
 
     void Update()
     {
-        text1.text = "Collect snowballs " + Inventory.snowballsCount + "/9";
+        text1.text = "Collect snowballs " + Inventory.snowballsCount + "/9"; 
         text2.text = "Collect stones " + Inventory.stonesCount + "/10";
         text3.text = "Collect carrots " + Inventory.carrotCount + "/1";
         text4.text = "Collect tophat " + Inventory.tophatCount + "/1";
