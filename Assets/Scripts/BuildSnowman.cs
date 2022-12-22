@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class BuildSnowman : MonoBehaviour
@@ -21,6 +22,8 @@ public class BuildSnowman : MonoBehaviour
     bool carrot;
     bool tophat;
     bool scarf;
+
+    
 
     //Top part
     public GameObject topSnowmanFase1Part;
@@ -82,11 +85,19 @@ public class BuildSnowman : MonoBehaviour
     public GameObject bottomSnowmanFase3Part;
     public GameObject bottomSnowmanFase3;
     public GameObject BuildSnowManText;
+    public GameObject VictoryText;
 
     private bool Bruh = true;
     // Update is called once per frame
     void Update()
     {
+        if (arms == 2 && stoneBody == 3 && stoneHead == 7 && carrot  && tophat && scarf)
+        {
+            VictoryText.SetActive(true);
+            GameManager.Reload();
+            Debug.Log("DONE");
+        }
+
         hitting = Physics.Raycast(lookDir.transform.position, lookDir.transform.forward, out hit);
         if (hitting)
         {
@@ -252,6 +263,7 @@ public class BuildSnowman : MonoBehaviour
                         carrotNosePart.SetActive(false);
                         hasBuild = true;
                         Inventory.carrot--;
+                        carrot = true;
                     }
                     else if (Inventory.stones > 0 && !hasBuild && stoneHead != 7)
                     {
@@ -313,6 +325,7 @@ public class BuildSnowman : MonoBehaviour
                         Tophat.SetActive(true);
                         Inventory.tophat--;
                         hasBuild = true;
+                        tophat = true;
                     }
                     else if (!scarf && !hasBuild && Inventory.scarf > 0)
                     {
@@ -320,6 +333,7 @@ public class BuildSnowman : MonoBehaviour
                         Scarf.SetActive(true);
                         Inventory.scarf--;
                         hasBuild = true;
+                        scarf = true;
                     }
                 }
 
@@ -328,7 +342,9 @@ public class BuildSnowman : MonoBehaviour
                     Bruh = false;
                     StoneEyeLeftPart.SetActive(true);
                 }
-                hasBuild = false; 
+                hasBuild = false;
+
+                
             }
         }
     }
