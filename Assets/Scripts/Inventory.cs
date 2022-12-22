@@ -9,7 +9,7 @@ public static class Inventory
     public static int carrot = 1;
     public static int scarf = 1;
     public static int sticks = 2;
-    public static int tophat = 1;
+    public static int tophat;
     public static int coins;
     public static int key;
     public static int trowableSnowball;

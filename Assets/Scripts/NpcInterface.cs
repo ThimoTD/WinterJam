@@ -108,7 +108,7 @@ public class NpcInterface : MonoBehaviour
             Inventory.tophat++;
             Inventory.tophatCount++;
             Inventory.coins --;
-            
+            Debug.Log(Inventory.coins);
         }
     }
 }
