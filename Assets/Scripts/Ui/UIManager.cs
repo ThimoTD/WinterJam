@@ -5,12 +5,18 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public GameObject InsideCamera;
-
+    public GameObject Interact;
     private List<GameObject> children = new();
+    private static UIManager instance;
     public void Awake()
     {
+        
+        instance = this;
         UiAnimationController.SetController(gameObject.GetComponent<Animator>());
         UiAnimationController.SetCameraController(InsideCamera.GetComponent<Animator>());
+        UiAnimationController.SetInsideCamera(InsideCamera);
+      //  UiAnimationController.SetInteract(Interact);
+        UiAnimationController.LockMove();
 
         foreach (Transform child in transform.GetComponentsInChildren<Transform>()) 
         {
@@ -22,36 +28,54 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            UiAnimationController.HasStarted = true;
-            UiAnimationController.Trigger(Triggers.ToMAIN);
+            if(UiAnimationController.HasStarted != true)
+            {
+                UiAnimationController.HasStarted = true;
+                UiAnimationController.Trigger(Triggers.ToMAIN);
+                
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            children = new();
+            foreach (Transform child in transform.GetComponentsInChildren<Transform>())
+            {
+                children.Add(child.gameObject);
+            }
+
+
+
+            Debug.Log("escape");
             foreach(GameObject child in children)
             {
+                Debug.Log(child.name);
                 if(child.active)
                 {
                     if(child.name == "MainMenu")
                     {
+                        Debug.Log("quit");
                         Quit();
                         break;
                     }
 
-                    if (child.name == "Playing")
+                    if (child.name == "playing")
                     {
-                        UiAnimationController.Trigger(Triggers.ToSETTINGS);
+                        Debug.Log("esq quit");
+                        UiAnimationController.Trigger(Triggers.ToOPTIONS);
                         break;
                     }
 
                     if(child.name == "options")
                     {
+                        Debug.Log("back to play");
                         UiAnimationController.Trigger(Triggers.ToPLAY);
                         break;
                     }
 
                     if (child.name == "Settings")
                     {
+                        Debug.Log("esc in settings?");
                         if (InsideCamera.active)
                         {
                             UiAnimationController.Trigger(Triggers.ToMAIN);
@@ -93,5 +117,10 @@ public class UIManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public static UIManager GetInstance()
+    {
+        return instance;
     }
 }

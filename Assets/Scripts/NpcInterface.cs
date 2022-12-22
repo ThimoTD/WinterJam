@@ -13,24 +13,13 @@ public class NpcInterface : MonoBehaviour
     MouseLook mouselook;
     PlayerMovement pm;
 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-  
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            KeyCodePress.SetActive(true);
+            if (UiAnimationController.Playing)
+                UiAnimationController.Interactable(true);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -43,8 +32,9 @@ public class NpcInterface : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            KeyCodePress.SetActive(false);
-            ShopInterface.SetActive(false);
+            Debug.Log("call");
+            UiAnimationController.Interactable(false);
+            UiAnimationController.Trigger(Triggers.ToPLAY);
         }
     }
 
@@ -56,24 +46,11 @@ public class NpcInterface : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            ShopInterface.SetActive(true);
-            texttt.SetActive(false);
-            pm = GameObject.Find("FirstPersonPlayer").GetComponent<PlayerMovement>();
-            pm.moveSpeed = 0;
-            player.GetComponent<MouseLook>().enabled = false;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            Debug.Log("gtwge");
+            UiAnimationController.Trigger(Triggers.ToSHOP);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ShopInterface.SetActive(false);
-            pm = GameObject.Find("FirstPersonPlayer").GetComponent<PlayerMovement>();
-            pm.moveSpeed = 10;
-            player.GetComponent<MouseLook>().enabled = true;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Debug.Log("gtwge");
+            UiAnimationController.Trigger(Triggers.ToPLAY);
         }
     }
 

@@ -32,10 +32,18 @@ public class PickupItem : MonoBehaviour
         {
             if (hit.distance < 5 && hit.transform.tag == "Snowball" || hit.distance < 5 && hit.transform.tag == "Stone" || hit.distance < 5 && hit.transform.tag == "Stick" || hit.distance < 5 && hit.transform.tag == "Carrot" || hit.distance < 5 && hit.transform.tag == "Scarf" || hit.distance < 5 && hit.transform.tag == "Tophat" || hit.distance < 5 && hit.transform.tag == "Coin" || hit.distance < 5 && hit.transform.tag == "Key")
             {
-                PickUpText.gameObject.SetActive(true);
+                if (UiAnimationController.Playing)
+                {
+                    UiAnimationController.Interactable(true);
+                }
+                    
             }else
             {
-                PickUpText.gameObject.SetActive(false);
+                if (UiAnimationController.Playing)
+                {
+                    UiAnimationController.Interactable(false);
+                }
+                    
             }
 
             if (hit.distance < 5 && hit.transform.tag == "Snowball" && Input.GetKeyDown(KeyCode.E))
