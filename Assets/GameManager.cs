@@ -10,9 +10,9 @@ public static class GameManager
 {
     public static void Reload()
     {
-        SceneManager.UnloadScene("Main");
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        SceneManager.LoadScene("Main");
     }
 }
 
